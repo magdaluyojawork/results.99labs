@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/bot.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <link href="astra-frontend.min.css" rel="stylesheet" />
+    <link rel="icon" href="/images/cropped-Logo-Black-White-2-32x32.png" sizes="32x32">
+    <link rel="icon" href="/images/cropped-Logo-Black-White-2-192x192.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="/images/cropped-Logo-Black-White-2-180x180.png">
+    <title>Ninety9 Labs | View Lab Test Results</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/styles.css" rel="stylesheet" />
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myLinks");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <header>
+        <div class="header-wrap">
+            <div class="row">
+                <div class="col-lg-2">
+                    <a href="https://99-labs.com/" class="custom-logo-link" rel="home" aria-current="page"><img width="92" height="83" src="/images/Logo-Black-White-2-92x83.png" class="custom-logo" alt="Ninety9 Labs" decoding="async" srcset="/images/Logo-Black-White-2-92x83.png 92w, /images/Logo-Black-White-2-300x272.png 300w, /images/Logo-Black-White-2-1024x928.png 1024w, /images/Logo-Black-White-2-768x696.png 768w, /images/Logo-Black-White-2-600x544.png 600w, /images/Logo-Black-White-2.png 1100w" sizes="(max-width: 92px) 100vw, 92px"></a>
+                </div>
+                <div class="col-lg-8">
+                    <div class="site-header-primary-section-center site-header-section ast-flex ast-grid-section-center">
+                        <div class="ast-builder-menu-1 ast-builder-menu ast-flex ast-builder-menu-1-focus-item ast-builder-layout-element site-header-focus-item" data-section="section-hb-menu-1">
+                            <div class="ast-main-header-bar-alignment">
+                                <div class="main-header-bar-navigation">
+                                    <nav class="site-navigation ast-flex-grow-1 navigation-accessibility site-header-focus-item" id="primary-site-navigation-desktop" aria-label="Site Navigation" itemscope="itemscope">
+                                        <div class="main-navigation ast-inline-flex">
+                                            <ul id="ast-hf-menu-1" class="main-header-menu ast-menu-shadow ast-nav-menu ast-flex  submenu-with-border stack-on-mobile">
+                                                <li id="menu-item-870" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-870"><a href="https://99-labs.com/#about" class="menu-link">About</a></li>
+                                                <li id="menu-item-871" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-871"><a href="https://99-labs.com/#products" class="menu-link">Products</a></li>
+                                                <li id="menu-item-872" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-872"><a href="https://99-labs.com/#white" class="menu-link">White Label</a></li>
+                                                <li id="menu-item-873" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-873"><a href="https://99-labs.com/#contact" class="menu-link">Contact Us</a></li>
+                                                <li id="menu-item-873" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-873"><a href="https://results.99-labs.com/" class="menu-link">Batch Testing</a></li>
+                                            </ul>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="site-header-primary-section-right site-header-section ast-flex ast-grid-right-section">
+                        <div class="site-header-primary-section-right-center site-header-section ast-flex ast-grid-right-center-section">
+                        </div>
+                        <div class="ast-builder-layout-element ast-flex site-header-focus-item" data-section="section-hb-social-icons-1">
+                            <div class="ast-header-social-1-wrap ast-header-social-wrap"><div class="header-social-inner-wrap element-social-inner-wrap social-show-label-false ast-social-color-type-custom ast-social-stack-none ast-social-element-style-filled"><a href="" aria-label="Facebook" target="_blank" rel="noopener noreferrer" style="--color: #557dbc; --background-color: transparent;" class="ast-builder-social-element ast-inline-flex ast-facebook header-social-item"><span class="ahfb-svg-iconset ast-inline-flex svg-baseline"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"></path></svg></span></a><a href="" aria-label="Twitter" target="_blank" rel="noopener noreferrer" style="--color: #7acdee; --background-color: transparent;" class="ast-builder-social-element ast-inline-flex ast-twitter header-social-item"><span class="ahfb-svg-iconset ast-inline-flex svg-baseline"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg></span></a><a href="" aria-label="Instagram" target="_blank" rel="noopener noreferrer" style="--color: #8a3ab9; --background-color: transparent;" class="ast-builder-social-element ast-inline-flex ast-instagram header-social-item"><span class="ahfb-svg-iconset ast-inline-flex svg-baseline"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg></span></a></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Top Navigation Menu -->
+        <div class="topnav">
+            <a href="https://99-labs.com/" class="custom-logo-link" rel="home" aria-current="page"><img width="92" height="83" src="/images/Logo-Black-White-2-92x83.png" class="custom-logo" alt="Ninety9 Labs" decoding="async" srcset="/images/Logo-Black-White-2-92x83.png 92w, /images/Logo-Black-White-2-300x272.png 300w, /images/Logo-Black-White-2-1024x928.png 1024w, /images/Logo-Black-White-2-768x696.png 768w, /images/Logo-Black-White-2-600x544.png 600w, /images/Logo-Black-White-2.png 1100w" sizes="(max-width: 92px) 100vw, 92px"></a>
+            <!-- Navigation links (hidden by default) -->
+            <div id="myLinks">
+                <a href="https://99-labs.com/#about">About</a>
+                <a href="https://99-labs.com/#products">Products</a>
+                <a href="https://99-labs.com/#white">White Label</a>
+                <a href="https://99-labs.com/#contact">Contact Us</a>
+                <a href="https://results.99-labs.com/">Batch Testing</a>
+            </div>
+            <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </header>
+    <div id="root"></div>
+    <footer>
+        <div data-elementor-type="footer" data-elementor-id="885" class="elementor elementor-885 elementor-location-footer" data-elementor-post-type="elementor_library">
+            <section class="elementor-section elementor-top-section elementor-element elementor-element-25c117be elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="25c117be" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                <div class="elementor-container elementor-column-gap-default">
+                    <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-387b084" data-id="387b084" data-element_type="column">
+                        <div class="elementor-widget-wrap elementor-element-populated">
+                            <div class="elementor-element elementor-element-2deb0964 elementor-widget elementor-widget-theme-site-logo elementor-widget-image" data-id="2deb0964" data-element_type="widget" data-widget_type="theme-site-logo.default">
+                                <div class="elementor-widget-container">
+                                    <a href="https://99-labs.com">
+                                        <img width="1100" height="997" src="/images/Logo-Black-White-2-92x83.png" class="attachment-full size-full wp-image-896" alt="" loading="lazy" srcset="/images/Logo-Black-White-2.png 1100w, /images/Logo-Black-White-2-300x272.png 300w, /images/Logo-Black-White-2-1024x928.png 1024w, /images/Logo-Black-White-2-768x696.png 768w, /images/Logo-Black-White-2-600x544.png 600w, /images/Logo-Black-White-2-92x83.png 92w" sizes="(max-width: 1100px) 100vw, 1100px">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="elementor-element elementor-element-2726102 elementor-widget elementor-widget-text-editor" data-id="2726102" data-element_type="widget" data-widget_type="text-editor.default">
+                                <div class="elementor-widget-container">
+                                    <p>Welcome to Ninety9 Labs, where purity, quality, and innovation come together to redefine the cannabis experience. As a leading specialist in cannabis extractions, our focus is solely on producing premium products—rosin, diamonds, budder, and cartridges—that set industry standards for purity and excellence.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </footer>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+</body>
+</html>
