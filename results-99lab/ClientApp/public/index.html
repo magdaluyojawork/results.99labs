@@ -26,17 +26,15 @@
     <link rel="apple-touch-icon" href="/images/cropped-Logo-Black-White-2-180x180.png">
     <title>Ninety9 Labs | View Lab Test Results</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link href="css/styles.css" rel="stylesheet" />
-    <script>
-        function myFunction() {
-            var x = document.getElementById("myLinks");
-            if (x.style.display === "block") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "block";
-            }
-        }
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/pdfjs-dist/web/pdf_viewer.css">
+
+    <script src="/pdfjs-dist/build/pdf.js"></script>
+    <script src="/pdfjs-dist/web/pdf_viewer.js"></script>
 </head>
 <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -120,6 +118,133 @@
             </section>
         </div>
     </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="resultsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" ><span id="exampleModalLabel"></span> Lab Results</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="viewerContainer">
+                        <div id="viewer" class="pdfViewer"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        "use strict";
+        var { pdfjsLib } = globalThis;
+        var fileURL = "";
+        var batchNo = "";
+        if (!pdfjsLib.getDocument || !pdfjsViewer.PDFViewer) {
+            alert("Please build the pdfjs-dist library using\n  `gulp dist-install`");
+        }
+        
+        function myFunction() {
+            var x = document.getElementById("myLinks");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+
+        $(document).on("click", ".sherbot-option-button", function () {
+            fileURL = window.$(this).attr("data-fileurl");
+            batchNo = window.$(this).attr("data-batchno");
+            if (fileURL) { 
+                window.$("#exampleModalLabel").text(batchNo);
+                window.$("#viewer").html("");
+                window.$("#hiddenCopyElement").remove();
+                window.$("#resultsModal").modal("show");
+            }
+        });
+        $('#resultsModal').on('shown.bs.modal', function () {
+            pdfjsLib.GlobalWorkerOptions.workerSrc =
+                "/pdfjs-dist/build/pdf.worker.js";
+
+            // Some PDFs need external cmaps.
+            //
+            const CMAP_URL = "/pdfjs-dist/cmaps/";
+            const CMAP_PACKED = true;
+
+            const DEFAULT_URL = fileURL;
+            // To test the AcroForm and/or scripting functionality, try e.g. this file:
+            // "../../test/pdfs/160F-2019.pdf"
+
+            const ENABLE_XFA = true;
+            const SEARCH_FOR = ""; // try "Mozilla";
+
+            const SANDBOX_BUNDLE_SRC = "/pdfjs-dist/build/pdf.sandbox.js";
+
+            const container = document.getElementById("viewerContainer");
+
+            const eventBus = new pdfjsViewer.EventBus();
+
+            // (Optionally) enable hyperlinks within PDF files.
+            const pdfLinkService = new pdfjsViewer.PDFLinkService({
+                eventBus,
+            });
+
+            // (Optionally) enable find controller.
+            const pdfFindController = new pdfjsViewer.PDFFindController({
+                eventBus,
+                linkService: pdfLinkService,
+            });
+
+            // (Optionally) enable scripting support.
+            const pdfScriptingManager = new pdfjsViewer.PDFScriptingManager({
+                eventBus,
+                sandboxBundleSrc: SANDBOX_BUNDLE_SRC,
+            });
+
+            const pdfViewer = new pdfjsViewer.PDFViewer({
+                container,
+                eventBus,
+                linkService: pdfLinkService,
+                findController: pdfFindController,
+                scriptingManager: pdfScriptingManager,
+            });
+            pdfLinkService.setViewer(pdfViewer);
+            pdfScriptingManager.setViewer(pdfViewer);
+
+            eventBus.on("pagesinit", function () {
+                // We can use pdfViewer now, e.g. let's change default scale.
+                pdfViewer.currentScaleValue = "page-width";
+
+                // We can try searching for things.
+                if (SEARCH_FOR) {
+                    eventBus.dispatch("find", { type: "", query: SEARCH_FOR });
+                }
+            });
+
+            // Loading document.
+            const loadingTask = pdfjsLib.getDocument({
+                url: DEFAULT_URL,
+                cMapUrl: CMAP_URL,
+                cMapPacked: CMAP_PACKED,
+                enableXfa: ENABLE_XFA,
+            });
+            (async function () {
+                const pdfDocument = await loadingTask.promise;
+                // Document loaded, specifying document for the viewer and
+                // the (optional) linkService.
+                pdfViewer.setDocument(pdfDocument);
+
+                pdfLinkService.setDocument(pdfDocument, null);
+            })();
+        });
+        
+    </script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

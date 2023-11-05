@@ -72,51 +72,60 @@ class ActionProvider {
         var labResultURL = process.env.REACT_APP_URL + "Lab Results/" + result.labResultFilename;
         //var labResultURL = "/Lab Result/" + result.labResultFilename;
         ChatResponse.FileURL = labResultURL;
-        const message1 = this.createChatBotMessage("Click the link below to view results.",
+        const message1 = this.createChatBotMessage("Click the button below to view results.",
             {
-                //widget: "downloadLabResult",
+                widget: "downloadLabResult",
                 withAvatar: true,
             });
 
         this.updateChatbotState(message1);
-        ChatResponse.Step = 0;
-        ChatResponse.Name = "";
-        ChatResponse.Email = "";
-        ChatResponse.BatchNo = "";
-        if (navigator.userAgent.match(/Android/i)
-            || navigator.userAgent.match(/webOS/i)
-            || navigator.userAgent.match(/iPhone/i)
-            || navigator.userAgent.match(/iPad/i)
-            || navigator.userAgent.match(/iPod/i)
-            || navigator.userAgent.match(/BlackBerry/i)
-            || navigator.userAgent.match(/Windows Phone/i))
-            window.open("https://docs.google.com/viewerng/viewer?url="+labResultURL, '_blank', 'noreferrer');
-        else
-            window.open(labResultURL, '_blank', 'noreferrer');
+        
 
+        //if (navigator.userAgent.match(/Android/i)
+        //    || navigator.userAgent.match(/webOS/i)
+        //    || navigator.userAgent.match(/iPhone/i)
+        //    || navigator.userAgent.match(/iPad/i)
+        //    || navigator.userAgent.match(/iPod/i)
+        //    || navigator.userAgent.match(/BlackBerry/i)
+        //    || navigator.userAgent.match(/Windows Phone/i))
+        //    window.open("https://docs.google.com/viewerng/viewer?url="+labResultURL, '_blank', 'noreferrer');
+        //else
+        //    window.open(labResultURL, '_blank', 'noreferrer');
+        window.fileURL = ChatResponse.FileURL;
+        window.batchNo = ChatResponse.BatchNo;
+
+        window.$("#viewer").html("");
+        window.$("#hiddenCopyElement").remove();
+        window.$("#exampleModalLabel").text(ChatResponse.BatchNo);
+        window.$("#resultsModal").modal("show");
+        
+
+        const message = this.createChatBotMessage("Are you here to view your batch record ? ", {
+            widget: "sherbotOptions",
+            withAvatar: true,
+        });
+        this.updateChatbotState(message);
         setTimeout(() => {
-            //const list = document.getElementsByTagName("a");
-            //list[list.length - 2].href = labResultURL;
-            //list[list.length - 2].innerHTML = result.labResultFilename;
+            //const list2 = document.getElementsByClassName("react-chatbot-kit-chat-bot-message");
+            //if (navigator.userAgent.match(/Android/i)
+            //    || navigator.userAgent.match(/webOS/i)
+            //    || navigator.userAgent.match(/iPhone/i)
+            //    || navigator.userAgent.match(/iPad/i)
+            //    || navigator.userAgent.match(/iPod/i)
+            //    || navigator.userAgent.match(/BlackBerry/i)
+            //    || navigator.userAgent.match(/Windows Phone/i)) {
+            //    list2[list2.length - 1].innerHTML = "<a href='https://docs.google.com/viewerng/viewer?url=" + labResultURL + "' target='_blank'>" + result.labResultFilename + "</a>";
+            //} else {
+            //    list2[list2.length - 1].innerHTML = "<a href='" + labResultURL + "' target='_blank'>" + result.labResultFilename + "</a>";
+            //}
 
-            const message = this.createChatBotMessage("Are you here to view your batch record ? ", {
-                widget: "sherbotOptions",
-                withAvatar: true,
-            });
-            this.updateChatbotState(message);
-
-            const list2 = document.getElementsByClassName("react-chatbot-kit-chat-bot-message"); 
-            if (navigator.userAgent.match(/Android/i)
-                || navigator.userAgent.match(/webOS/i)
-                || navigator.userAgent.match(/iPhone/i)
-                || navigator.userAgent.match(/iPad/i)
-                || navigator.userAgent.match(/iPod/i)
-                || navigator.userAgent.match(/BlackBerry/i)
-                || navigator.userAgent.match(/Windows Phone/i)) {
-                list2[list2.length - 1].innerHTML = "<a href='https://docs.google.com/viewerng/viewer?url=" + labResultURL + "' target='_blank'>" + result.labResultFilename + "</a>";
-            } else {
-                list2[list2.length - 1].innerHTML = "<a href='" + labResultURL + "' target='_blank'>" + result.labResultFilename + "</a>";
-            }
+            window.$(".sherbot-option-button").eq(window.$(".sherbot-option-button").length - 2).attr("data-fileurl", ChatResponse.FileURL);
+            window.$(".sherbot-option-button").eq(window.$(".sherbot-option-button").length - 2).attr("data-batchno", ChatResponse.BatchNo);
+            ChatResponse.Step = 0;
+            ChatResponse.Name = "";
+            ChatResponse.Email = "";
+            ChatResponse.BatchNo = "";
+            ChatResponse.FileURL = "";
             
         }, 2000);
     }

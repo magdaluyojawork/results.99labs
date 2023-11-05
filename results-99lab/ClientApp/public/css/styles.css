@@ -192,7 +192,7 @@ header {
         font-size: 17px;
         display: block
     }
-
+.
 #myLinks a:hover {
     background-color: #ddd;
     color: #000
@@ -228,11 +228,15 @@ header {
     width: 100% !important;
     height: 100% !important;
 }
-.modal{
-    padding-right:0px !important;
+.modal-body {
+    height: 100vh !important;
 }
-.modal-dialog{
-    max-width:612px !important;
+
+#viewerContainer {
+    overflow: auto;
+    position: absolute;
+    width: 100%;
+    height: 100vh !important;
 }
 @media (min-width:544px) {
     .header-wrap {
@@ -263,5 +267,10 @@ header {
 
     .topnav {
         display: block !important
+    }
+}
+@media screen and (max-width:543px) {
+    .pdfViewer .page {
+        margin-left: 10px !important;
     }
 }
